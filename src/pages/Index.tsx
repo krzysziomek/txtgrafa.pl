@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { DownloadSection } from '@/components/download/DownloadSection';
 import { AnimatedItem } from '@/components/motion/AnimatedPage';
-import { Sparkles } from 'lucide-react';
 
 export function Index() {
   return (
