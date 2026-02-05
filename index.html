@@ -1,156 +1,16 @@
 <!DOCTYPE html>
 <html lang="pl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paczka Grafa</title>
-    <meta name="description" content="Pobierz paczki zasobów Minecraft, overlaye i ramki do rud. Darmowe paczki tekstur dla graczy Minecraft.">
-    <meta name="keywords" content="Minecraft, paczka zasobów, overlay, ramki do rud, tekstury, pobieranie, Graf, Paczka Grafa">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-        @keyframes slideIn {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        .animate-fadeIn {
-            animation: fadeIn 0.5s ease-out;
-        }
-        .animate-slideIn {
-            animation: slideIn 0.5s ease-out;
-        }
-    </style>
-</head>
-<body class="bg-gray-900 text-gray-200 min-h-screen flex flex-col">
-    <nav class="bg-gray-800 p-4 shadow-md fixed top-0 w-full z-10">
-        <div class="container mx-auto flex flex-wrap justify-between items-center">
-            <a href="/" class="text-lg font-semibold text-gray-100 flex items-center mb-2 md:mb-0">
-                <img src="/logo.png" alt="Logo" class="h-8 mr-2"> txtgrafa.pl
-                <!-- <img src="crafatar.com/avatars/4fa3d966-93d3-4e7d-9618-5f6532864a53" alt="Logo" class="h-8 mr-2"> txtgrafa.pl -->
-            </a>
-            <div class="flex flex-wrap space-x-2 md:space-x-4">
-                <a href="/paczka" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-3 py-1 md:px-4 md:py-2 rounded-md text-sm md:text-base mb-2 md:mb-0 transition-colors duration-300">Paczka</a>
-                <a href="/rozne" class="bg-blue-600 hover:bg-blue-700 text-white font-semibold px-3 py-1 md:px-4 md:py-2 rounded-md text-sm md:text-base mb-2 md:mb-0 transition-colors duration-300">Różne</a>
-            </div>
-        </div>
-    </nav>
-
-    <main class="flex-grow flex items-center justify-center px-4 mt-16">
-        <div class="bg-gray-800 p-6 md:p-12 rounded-md shadow-md text-center max-w-2xl w-full mt-20 md:mt-0 animate-fadeIn">
-            <h1 class="text-4xl md:text-6xl font-semibold mb-8 md:mb-10 text-gray-200 animate-slideIn">Pobierz Paczkę</h1>
-
-            <div class="mb-6 md:mb-8 animate-slideIn" style="animation-delay: 0.2s;">
-                <label for="category" class="block text-xl md:text-2xl font-bold mb-3 md:mb-4 text-gray-200">Wybierz kategorię:</label>
-                <select id="category" class="w-full md:w-4/5 bg-gray-700 text-gray-200 border border-gray-600 rounded-md p-3 md:p-4 text-base md:text-lg text-center">
-                    <option value="overlay" class="text-base md:text-xl font-bold">Overlay</option>
-                    <option value="ramki" class="text-base md:text-xl font-bold">Ramki Rud</option>
-                    <option value="pozostale" class="text-base md:text-xl font-bold">Pozostałe</option>
-                </select>
-            </div>
-
-            <div class="mb-6 md:mb-8 animate-slideIn" style="animation-delay: 0.4s;">
-                <label for="files" class="block text-xl md:text-2xl font-bold mb-3 md:mb-4 text-gray-200">Wybierz wersję:</label>
-                <select id="files" class="w-full md:w-4/5 bg-gray-700 text-gray-200 border border-gray-600 rounded-md p-3 md:p-4 text-base md:text-lg text-center">
-                </select>
-            </div>
-
-            <div class="animate-slideIn" style="animation-delay: 0.6s;">
-                <button id="download" class="w-full md:w-1/2 bg-green-600 hover:bg-green-700 text-white font-bold px-4 py-4 md:px-6 md:py-6 text-xl md:text-2xl rounded-md mt-4 md:mt-6 transition-colors duration-300 transform hover:scale-105">
-                    Pobierz
-                </button>
-            </div>
-        </div>
-    </main>
-
-    <script>
-        const categoryDropdown = document.getElementById('category');
-        const fileDropdown = document.getElementById('files');
-        const downloadButton = document.getElementById('download');
-
-        const filesByCategory = {
-            overlay: [
-                { display: 'Overlay Grafa 1.21.x Czerwiec 2025', file: '§bOverlay Grafa §a1.21.X §fCzerwiec 2025.zip' },
-                { display: 'Różowy Overlay Grafa 1.21.x Czerwiec 2025', file: '§dRóżowy §bOverlay Grafa §a1.21.X §fCzerwiec 2025.zip' },
-                { display: 'Overlay Grafa 1.21 Grudzien 2024', file: '§bOverlay Grafa §a1.21 §fGrudzien 2024.zip' },
-                { display: 'Overlay Grafa 1.19 Czerwiec 2022', file: '§bOverlay Grafa §a1.19 §fCzerwiec 2022.zip' },
-                { display: 'Overlay Grafa 1.19 Lite', file: '§bOverlay Grafa §a1.19 §fLite.zip' },
-                { display: 'Overlay Grafa 1.17 Listopad 2021', file: '§bOverlay Grafa §a1.17 §fListopad 2021.zip' },
-                { display: 'Overlay Grafa 1.16 Marzec 2021', file: '§bOverlay Grafa §a1.16 §fMarzec 2021.zip' }, 
-                { display: 'Różowy Overlay Grafa 1.16 Marzec 2021', file: '§dRóżowy §6Overlay Grafa §a1.16 §fMarzec 2021.zip' },
-                { display: 'Overlay Grafa 1.15 Sierpień 2020', file: '§bOverlay Grafa §a1.15 §fSierpień 2020.zip' },
-                { display: 'Overlay Grafa 1.15 Luty 2020', file: '§dOverlay Grafa §a1.15 §fLuty 2020.zip' },
-                { display: 'Overlay Grafa 1.14 Sierpień 2020', file: '§bOverlay Grafa §a1.14 §fSierpień 2020.zip' },
-                { display: 'Overlay Grafa 1.14.4 Styczen 2020', file: '§6Overlay Grafa §a1.14.4 §fStyczen 2020.zip' },
-                { display: 'Overlay Grafa 1.14.4 Grudzien 2019', file: '§6Overlay Grafa §a1.14.4 §fGrudzien 2019.zip' },
-                { display: 'Overlay Grafa 1.14.4 Listopad 2019', file: '§6Overlay Grafa §a1.14.4 §fListopad 2019.zip' },
-                { display: 'Overlay Grafa 1.13-14 Luty 2020', file: '§dOverlay Grafa §a1.13-14 §fLuty 2020.zip' },
-                { display: 'Overlay Grafa 1.12 Sierpień 2020', file: '§bOverlay Grafa §a1.12 §fSierpień 2020.zip' },
-                { display: 'Overlay Grafa 1.8 Sierpień 2020', file: '§bOverlay Grafa §a1.8 §fSierpień 2020.zip' },
-                { display: 'Overlay Grafa 1.6-8 Luty 2020', file: '§dOverlay Grafa §a1.6-8 §fLuty 2020.zip' },
-                { display: 'Stary Overlay Grafa 1.9+', file: '§bStary Overlay Grafa §f1.9+.zip' },
-                { display: 'Stary Overlay Grafa 1.8', file: '§bStary Overlay Grafa §f1.8.zip' },
-                { display: 'GUI - Grafs Edit', file: '§bGUI - Grafs Edit.zip' }
-            ],
-            ramki: [
-                { display: 'Ramki do rud 1.19', file: '§bRamki do rud §a1.19.zip' },
-                { display: 'Ramki do rud 1.17', file: '§bRamki do rud §a1.17.zip' },
-                { display: 'Ramki do rud 1.16', file: '§bRamki do rud §a1.16.zip' },
-                { display: 'Ramki do rud 1.15', file: '§bRamki do rud §a1.15.zip' },
-                { display: 'Ramki do rud 1.14', file: '§bRamki do rud  §a1.14.zip' },
-                { display: 'Ramki do rud 1.12', file: '§bRamki do rud §a1.12.zip' },
-                { display: 'Ramki do rud 1.8', file: '§bRamki do rud §a1.8.zip' },
-                { display: 'Różowe Ramki do rud', file: '§dRóżowe §bRamki do rud.zip' },
-                { display: 'Nowe Ramki do rud (tymczasowe przekierowanie)', file: 'new.html' }
-            ],
-            pozostale: [
-                { display: 'Legacy Efficiency 1.15', file: '§bLegacy Efficiency §a1.15.zip' },
-                { display: 'Disco Ziemniaki', file: '§eDisco Ziemniaki.zip' },
-                { display: 'Niska Tarcza', file: '§eNiska Tarcza.zip' }
-            ],
-        };
-
-        function populateFiles(category) {
-            fileDropdown.innerHTML = '';
-            filesByCategory[category].forEach(item => {
-                const option = document.createElement('option');
-                option.value = item.file;
-                option.textContent = item.display;
-                option.classList.add('text-base', 'md:text-xl', 'font-bold');
-                fileDropdown.appendChild(option);
-            });
-        }
-
-        categoryDropdown.addEventListener('change', () => {
-            const selectedCategory = categoryDropdown.value;
-            populateFiles(selectedCategory);
-        });
-
-        downloadButton.addEventListener('click', () => {
-            const selectedCategory = categoryDropdown.value;
-            const selectedFile = fileDropdown.value;
-
-            if (selectedCategory && selectedFile) {
-                const filePath = `pliki/${selectedCategory}/${selectedFile}`;
-                window.location.href = filePath;
-            }
-        });
-
-        // Initialize with default category
-        populateFiles('overlay');
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
-    <script>
-        document.getElementById('download').addEventListener('click', () => {
-            confetti({
-                particleCount: 120,
-                spread: 75,
-                origin: { y: 0.65 }
-            });
-        });
-    </script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Paczka Grafa - Darmowe Paczki Zasobów Minecraft</title>
+    <meta name="description" content="Pobierz paczki zasobów Minecraft, overlaye i ramki do rud. Darmowe paczki tekstur dla graczy Minecraft. Zero cookies, zero śledzenia." />
+    <meta name="keywords" content="Minecraft, paczka zasobów, overlay, ramki do rud, tekstury, pobieranie, Graf, Paczka Grafa" />
+    <meta name="theme-color" content="#111827" />
+    <link rel="icon" type="image/png" href="/logo.png" />
+  </head>
+  <body class="bg-gray-950 text-gray-200 antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
-
