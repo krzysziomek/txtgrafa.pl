@@ -1,39 +1,66 @@
 import { motion } from 'framer-motion';
 import { DownloadSection } from '@/components/download/DownloadSection';
 import { AnimatedItem } from '@/components/motion/AnimatedPage';
-import { Package } from 'lucide-react';
+import { Sparkles } from 'lucide-react';
 
 export function Index() {
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center px-4 py-12">
-      <div className="w-full max-w-4xl mx-auto text-center space-y-12">
+    <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center px-4 py-16 relative overflow-hidden">
+      {/* Background Decorative Elements */}
+      <div className="absolute top-1/4 -left-20 w-72 h-72 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-1/4 -right-20 w-72 h-72 bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
+
+      <div className="w-full max-w-4xl mx-auto text-center space-y-16 relative z-10">
         
-        <div className="space-y-4">
+        <div className="space-y-6">
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
+            initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center justify-center p-3 bg-blue-500/10 rounded-full mb-4"
+            transition={{ duration: 0.6, type: "spring" }}
+            className="inline-flex items-center justify-center p-3 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 border border-white/10 rounded-2xl mb-4"
           >
-            <Package className="w-8 h-8 text-blue-400" aria-hidden="true" />
+            <Sparkles className="w-10 h-10 text-blue-400" aria-hidden="true" />
           </motion.div>
           
           <AnimatedItem>
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-100 tracking-tight">
-              Pobierz Paczkę
+            <h1 className="text-5xl md:text-8xl font-black tracking-tight text-white">
+              Paczka <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">Grafa</span>
             </h1>
           </AnimatedItem>
           
           <AnimatedItem>
-            <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
-              Darmowe paczki zasobów Minecraft, overlaye i ramki do rud.
+            <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto font-medium leading-relaxed">
+              Odkryj najlepsze paczki zasobów Minecraft. 
+              <span className="text-white"> Piękne, szybkie i darmowe.</span>
             </p>
           </AnimatedItem>
         </div>
 
-        <div className="bg-gray-800/30 backdrop-blur-sm border border-gray-700/50 rounded-2xl p-6 md:p-10 shadow-2xl">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="glass-card rounded-[2.5rem] p-8 md:p-14"
+        >
           <DownloadSection />
-        </div>
+        </motion.div>
+
+        <AnimatedItem>
+          <div className="flex flex-wrap items-center justify-center gap-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-blue-500" />
+              <span className="text-sm font-semibold uppercase tracking-widest">Wysoka Jakość</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-indigo-500" />
+              <span className="text-sm font-semibold uppercase tracking-widest">Optymalizacja</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-2 h-2 rounded-full bg-purple-500" />
+              <span className="text-sm font-semibold uppercase tracking-widest">100% Darmowe</span>
+            </div>
+          </div>
+        </AnimatedItem>
 
       </div>
     </div>
