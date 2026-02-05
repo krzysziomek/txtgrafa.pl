@@ -27,9 +27,6 @@ export function Index() {
           <AnimatedItem>
             <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto">
               Darmowe paczki zasobów Minecraft, overlaye i ramki do rud.
-              <span className="block mt-2 text-sm text-gray-500">
-                Zero rejestracji, zero śledzenia, instant download.
-              </span>
             </p>
           </AnimatedItem>
         </div>
