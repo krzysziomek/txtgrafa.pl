@@ -13,14 +13,7 @@ export function Index() {
       <div className="w-full max-w-4xl mx-auto text-center space-y-16 relative z-10">
         
         <div className="space-y-6">
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, type: "spring" }}
-            className="inline-flex items-center justify-center p-3 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 border border-white/10 rounded-2xl mb-4"
-          >
-            <Sparkles className="w-10 h-10 text-blue-400" aria-hidden="true" />
-          </motion.div>
+
           
           <AnimatedItem>
             <h1 className="text-5xl md:text-8xl font-black tracking-tight text-white">
