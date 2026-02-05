@@ -24,7 +24,6 @@ export function Index() {
           <AnimatedItem>
             <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto font-medium leading-relaxed">
               Odkryj najlepsze paczki zasobów Minecraft. 
-              <span className="text-white"> Piękne, szybkie i darmowe.</span>
             </p>
           </AnimatedItem>
         </div>
