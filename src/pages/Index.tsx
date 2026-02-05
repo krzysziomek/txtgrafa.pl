@@ -17,7 +17,7 @@ export function Index() {
           
           <AnimatedItem>
             <h1 className="text-5xl md:text-8xl font-black tracking-tight text-white">
-              Paczka <span className=" bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">Grafa</span>
+              Paczka <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">Grafa</span>
             </h1>
           </AnimatedItem>
           
