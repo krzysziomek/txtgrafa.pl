@@ -31,7 +31,6 @@ export function Layout({ children }: LayoutProps) {
       <footer className="bg-gray-900 border-t border-gray-800 py-6 mt-auto">
         <div className="container mx-auto px-4 text-center text-gray-500 text-sm">
           <p>Paczka Grafa - Darmowe zasoby dla Minecraft</p>
-          <p className="mt-1">Zero cookies, zero tracking, 100% prywatności</p>
         </div>
       </footer>
     </div>
