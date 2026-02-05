@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { MessageCircle, ExternalLink, Timer } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 
-const DISCORD_URL = 'https://discord.com/oauth2/authorize?client_id=708235522186936421&permissions=8&scope=bot%20applications.commands';
+const DISCORD_URL = 'https://discord.com/oauth2/authorize?client_id=708235522186936421';
 
 export function Helikopter() {
   const [countdown, setCountdown] = useState(3);
