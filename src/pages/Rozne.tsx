@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/Card';
 import { AnimatedItem } from '@/components/motion/AnimatedPage';
-import { Wallpaper, Wrench, Shirt, Cpu, Gamepad2, Monitor, ExternalLink } from 'lucide-react';
+import { Wallpaper, Shirt, Cpu, Gamepad2, Monitor, ExternalLink, Image } from 'lucide-react';
 
 interface MiscItem {
   title: string;
@@ -16,10 +16,18 @@ const miscItems: MiscItem[] = [
   {
     title: 'Tapeta',
     icon: Wallpaper,
-    content: 'Tapeta Grafa na pulpit',
+    content: 'Tapeta Grafa na pulpit (Animated)',
     link: 'https://steamcommunity.com/sharedfiles/filedetails/?id=1406608111',
     linkText: 'Steam Workshop',
     external: true,
+  },
+  {
+    title: 'Tapeta v2',
+    icon: Image,
+    content: 'Druga tapeta Grafa (Static)',
+    link: '#',
+    linkText: 'Pobierz teraz',
+    external: false,
   },
   {
     title: 'Lunar Client',
@@ -54,15 +62,6 @@ const miscItems: MiscItem[] = [
       { text: 'Paczka modów', url: '/pliki/kwadratowa-masakra-mody-FABRIC-1.17.zip', external: false },
     ],
   },
-  {
-    title: 'Strumyk Modowo',
-    icon: Wrench,
-    content: 'Wymagane: Forge. Paczka modów dla serii.',
-    links: [
-      { text: 'Forge', url: 'https://files.minecraftforge.net/', external: true },
-      { text: 'Paczka modów', url: '/pliki/strumyk-modowo1.16.3.zip', external: false },
-    ],
-  },
 ];
 
 export function Rozne() {
@@ -79,7 +78,7 @@ export function Rozne() {
         {miscItems.map((item) => (
           <AnimatedItem key={item.title}>
             <Card title={item.title} icon={item.icon}>
-              <p className="mb-4">{item.content}</p>
+              <p className="mb-4 text-gray-400">{item.content}</p>
               
               {item.links ? (
                 <div className="flex flex-wrap gap-2">
@@ -87,19 +86,19 @@ export function Rozne() {
                     <a
                       key={link.text}
                       href={link.url}
-                      className="inline-flex items-center px-3 py-1.5 bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 rounded-md text-sm transition-colors"
+                      className="inline-flex items-center px-4 py-2 bg-blue-600/10 hover:bg-blue-600/20 text-blue-400 rounded-xl text-sm font-semibold transition-all border border-blue-500/20"
                       target={link.external ? '_blank' : undefined}
                       rel={link.external ? 'noopener noreferrer' : undefined}
                     >
                       {link.text}
-                      {link.external && <ExternalLink className="w-3 h-3 ml-1" />}
+                      {link.external && <ExternalLink className="w-3 h-3 ml-2" />}
                     </a>
                   ))}
                 </div>
               ) : item.link ? (
                 <a
                   href={item.link}
-                  className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm"
+                  className="inline-flex items-center px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-bold shadow-lg shadow-blue-900/20 transition-all text-sm"
                   target={item.external ? '_blank' : undefined}
                   rel={item.external ? 'noopener noreferrer' : undefined}
                 >
