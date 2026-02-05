@@ -24,6 +24,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@dyad-sh/react-vite-component-tagger": "^0.8.0",
     "@types/canvas-confetti": "^1.6.4",
     "@types/node": "^20.11.0",
     "@types/react": "^18.2.55",
