@@ -56,6 +56,10 @@ export const miscItems = [
     content: 'Tapeta Grafa:',
     link: 'https://steamcommunity.com/sharedfiles/filedetails/?id=1406608111',
     linkText: 'Steam Workshop',
+    links: [
+      { text: 'Pepe (żaba)', url: 'https://steamcommunity.com/sharedfiles/filedetails/?id=1406608111' },
+      { text: 'Honda (samochód)', url: '/pliki/kwadratowa-masakra-mody-FABRIC-1.17.zip' },
+    ],
   },
   {
     title: 'Lunar Client',
