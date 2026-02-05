@@ -28,27 +28,30 @@ export function CategorySelect({ value, onChange }: CategorySelectProps) {
       </label>
       
       <div className="relative max-w-2xl mx-auto">
-        {/* Bouncing Ball Animation - Visible on desktop/tablet */}
-        <div className="absolute -top-6 left-0 w-full hidden sm:block pointer-events-none z-20">
-          <motion.div
-            animate={{ x: `${activeIndex * 100}%` }}
-            transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="w-1/3 flex justify-center"
-          >
+        {/* Bouncing Ball Animation - Perfectly centered above buttons */}
+        <div className="absolute -top-7 left-0 right-0 hidden sm:block pointer-events-none z-20">
+          <div className="grid grid-cols-3 w-full">
             <motion.div
-              key={value}
-              initial={{ y: 0, scale: 1 }}
-              animate={{ 
-                y: [0, -15, 0],
-                scale: [1, 1.2, 1],
-              }}
-              transition={{ 
-                duration: 0.4,
-                ease: "easeOut"
-              }}
-              className="w-3 h-3 bg-blue-400 rounded-full shadow-[0_0_15px_rgba(96,165,250,1)]"
-            />
-          </motion.div>
+              animate={{ x: `${activeIndex * 100}%` }}
+              transition={{ type: "spring", stiffness: 350, damping: 30 }}
+              className="flex justify-center"
+            >
+              <motion.div
+                key={value}
+                initial={{ y: 10, opacity: 0 }}
+                animate={{ 
+                  y: [10, -15, 0],
+                  opacity: 1,
+                  scale: [1, 1.4, 1],
+                }}
+                transition={{ 
+                  duration: 0.45,
+                  ease: "easeOut"
+                }}
+                className="w-3.5 h-3.5 bg-blue-400 rounded-full shadow-[0_0_20px_rgba(96,165,250,1)] ring-4 ring-blue-400/20"
+              />
+            </motion.div>
+          </div>
         </div>
 
         <div 
@@ -69,14 +72,21 @@ export function CategorySelect({ value, onChange }: CategorySelectProps) {
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className={cn(
-                  'relative flex flex-col items-center justify-center p-6 rounded-2xl border-2 transition-all duration-300 gap-3 z-10',
+                  'relative flex flex-col items-center justify-center p-6 rounded-2xl border-2 transition-all duration-300 gap-3 z-10 overflow-hidden',
                   isSelected
-                    ? 'border-blue-500 bg-blue-500/15 text-blue-400 shadow-[0_0_25px_rgba(59,130,246,0.15)]'
-                    : 'border-gray-800 bg-gray-900/40 text-gray-500 hover:border-gray-700 hover:text-gray-300'
+                    ? 'border-blue-500 bg-blue-500/15 text-blue-400 shadow-[0_0_30px_rgba(59,130,246,0.2)]'
+                    : 'border-white/5 bg-white/5 text-gray-500 hover:border-white/10 hover:text-gray-300'
                 )}
               >
-                <Icon className={cn("w-7 h-7", isSelected ? "text-blue-400" : "text-gray-600")} aria-hidden="true" />
-                <span className="font-bold text-xs uppercase tracking-[0.2em]">{categories[key]}</span>
+                {isSelected && (
+                  <motion.div 
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent pointer-events-none"
+                  />
+                )}
+                <Icon className={cn("w-7 h-7 relative z-10", isSelected ? "text-blue-400" : "text-gray-600")} aria-hidden="true" />
+                <span className="font-bold text-xs uppercase tracking-[0.2em] relative z-10">{categories[key]}</span>
               </motion.button>
             );
           })}

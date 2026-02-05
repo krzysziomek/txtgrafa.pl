@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/Card';
 import { AnimatedItem } from '@/components/motion/AnimatedPage';
-import { HelpCircle, Heart, Code, ExternalLink } from 'lucide-react';
+import { HelpCircle, Heart, Code, ExternalLink, Cpu } from 'lucide-react';
 
 export function Paczka() {
   return (
@@ -22,29 +22,46 @@ export function Paczka() {
               zlokalizowany na dole ekranu w zakładce Paczki Zasobów w ustawieniach Minecrafta.
             </p>
             
-            <div className="mt-4 p-4 bg-gray-900/50 rounded-lg border border-gray-700">
-              <p className="font-medium text-gray-200 mb-2">Wymagania:</p>
-              <p className="text-sm">
-                Do pełnego korzystania z paczki potrzebny nam będzie{' '}
-                <a 
-                  href="https://optifine.net/downloads" 
-                  className="text-blue-400 hover:text-blue-300 inline-flex items-center transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Optifine <ExternalLink className="w-3 h-3 ml-1" />
-                </a>.
-                Jeśli podczas instalacji wystąpi błąd, zainstaluj{' '}
-                <a 
-                  href="https://java.com/en/download/"
-                  className="text-blue-400 hover:text-blue-300 inline-flex items-center transition-colors"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Java <ExternalLink className="w-3 h-3 ml-1" />
-                </a>.
-              </p>
+            <div className="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-4 bg-gray-900/50 rounded-lg border border-gray-700">
+                <p className="font-medium text-gray-200 mb-2 flex items-center gap-2">
+                  <div className="w-2 h-2 rounded-full bg-blue-500" /> Optifine:
+                </p>
+                <p className="text-sm">
+                  Do pełnego korzystania z paczki potrzebny nam będzie{' '}
+                  <a 
+                    href="https://optifine.net/downloads" 
+                    className="text-blue-400 hover:text-blue-300 inline-flex items-center transition-colors font-bold"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Optifine <ExternalLink className="w-3 h-3 ml-1" />
+                  </a>.
+                </p>
+              </div>
+
+              <div className="p-4 bg-blue-500/5 rounded-lg border border-blue-500/20">
+                <p className="font-medium text-blue-300 mb-2 flex items-center gap-2">
+                  <Cpu className="w-4 h-4" /> Fabric:
+                </p>
+                <p className="text-sm text-gray-400">
+                  Możesz również używać paczki na silniku Fabric. Wymagany jest wtedy mod: 
+                  <a 
+                    href="https://modrinth.com/mod/entitytexturefeatures" 
+                    className="text-blue-400 hover:text-blue-300 inline-flex items-center transition-colors font-bold block mt-1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    [ETF] Entity Texture Features <ExternalLink className="w-3 h-3 ml-1" />
+                  </a>
+                </p>
+              </div>
             </div>
+            
+            <p className="mt-4 text-xs text-gray-500 italic">
+              Jeśli podczas instalacji Optifine wystąpi błąd, upewnij się że masz zainstalowaną 
+              <a href="https://java.com/en/download/" className="text-blue-400/60 hover:text-blue-400 mx-1">Javę</a>.
+            </p>
           </Card>
         </AnimatedItem>
 
@@ -85,13 +102,13 @@ export function Paczka() {
             <div className="mt-4 flex flex-wrap gap-3">
               <a
                 href="mailto:kontakt@txtgrafa.pl?subject=Wsparcie%20techniczne%20-%20Paczka%20Grafa"
-                className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+                className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-bold"
               >
                 Wyślij email
               </a>
               <a
                 href="/helikopter"
-                className="inline-flex items-center px-4 py-2 bg-gray-700 hover:bg-gray-600 text-gray-200 rounded-lg transition-colors"
+                className="inline-flex items-center px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-200 rounded-lg transition-colors border border-white/5"
               >
                 Discord
               </a>
