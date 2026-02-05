@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import { DownloadSection } from '@/components/download/DownloadSection';
 import { AnimatedItem } from '@/components/motion/AnimatedPage';
-import { Package, Shield, Zap } from 'lucide-react';
+import { Package } from 'lucide-react';
 
 export function Index() {
   return (

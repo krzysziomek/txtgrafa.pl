@@ -2,7 +2,17 @@ import { Card } from '@/components/ui/Card';
 import { AnimatedItem } from '@/components/motion/AnimatedPage';
 import { Wallpaper, Wrench, Shirt, Cpu, Gamepad2, Monitor, ExternalLink } from 'lucide-react';
 
-const miscItems = [
+interface MiscItem {
+  title: string;
+  icon: typeof Wallpaper;
+  content: string;
+  link?: string;
+  linkText?: string;
+  external?: boolean;
+  links?: { text: string; url: string; external?: boolean }[];
+}
+
+const miscItems: MiscItem[] = [
   {
     title: 'Tapeta',
     icon: Wallpaper,
@@ -66,12 +76,12 @@ export function Rozne() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {miscItems.map((item, index) => (
+        {miscItems.map((item) => (
           <AnimatedItem key={item.title}>
             <Card title={item.title} icon={item.icon}>
               <p className="mb-4">{item.content}</p>
               
-              {'links' in item ? (
+              {item.links ? (
                 <div className="flex flex-wrap gap-2">
                   {item.links.map((link) => (
                     <a
@@ -86,7 +96,7 @@ export function Rozne() {
                     </a>
                   ))}
                 </div>
-              ) : (
+              ) : item.link ? (
                 <a
                   href={item.link}
                   className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm"
@@ -96,7 +106,7 @@ export function Rozne() {
                   {item.linkText}
                   {item.external && <ExternalLink className="w-4 h-4 ml-2" />}
                 </a>
-              )}
+              ) : null}
             </Card>
           </AnimatedItem>
         ))}

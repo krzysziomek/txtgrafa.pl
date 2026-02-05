@@ -1,5 +1,7 @@
 import { CategoryData, CategoryKey } from '@/types';
 
+export type { CategoryKey };
+
 export const categories: Record<CategoryKey, string> = {
   overlay: 'Overlay',
   ramki: 'Ramki Rud',
