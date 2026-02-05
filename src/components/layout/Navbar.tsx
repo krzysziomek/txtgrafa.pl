@@ -22,33 +22,31 @@ export function Navbar() {
         <div className="flex items-center justify-between h-16">
           <Link 
             to="/" 
-            className="flex items-center space-x-3 text-gray-100 hover:text-white transition-colors group"
+            className="flex items-center space-x-2 text-gray-100 hover:text-white transition-colors"
             aria-label="Strona główna Paczka Grafa"
           >
-            <div className="p-1.5 bg-blue-600/10 rounded-xl border border-blue-500/20 group-hover:border-blue-500/50 transition-all">
-              <img 
-                src="/graf.svg" 
-                alt="" 
-                className="h-7 w-7"
-                aria-hidden="true"
-              />
-            </div>
-            <span className="font-bold text-xl tracking-tight hidden sm:inline">txtgrafa.pl</span>
+            <img 
+              src="/logo.png" 
+              alt="" 
+              className="h-8 w-auto"
+              aria-hidden="true"
+            />
+            <span className="font-semibold text-lg hidden sm:inline">txtgrafa.pl</span>
           </Link>
 
-          <div className="hidden md:flex items-center space-x-3">
+          <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
               <Link key={item.path} to={item.path}>
                 <Button
                   variant={isActive(item.path) ? 'default' : 'ghost'}
                   className={cn(
-                    'px-6 h-10 rounded-xl font-semibold transition-all duration-300',
+                    'transition-all duration-300',
                     isActive(item.path) 
-                      ? 'bg-blue-600 hover:bg-blue-700 text-white shadow-lg shadow-blue-900/40 ring-2 ring-blue-500/50' 
-                      : 'text-gray-400 hover:text-white hover:bg-white/5 border border-transparent hover:border-gray-700'
+                      ? 'bg-blue-600 hover:bg-blue-700 text-white' 
+                      : 'text-gray-300 hover:text-white hover:bg-gray-800'
                   )}
                 >
-                  <item.icon className={cn("w-4 h-4 mr-2", isActive(item.path) ? "text-blue-100" : "text-blue-400")} aria-hidden="true" />
+                  <item.icon className="w-4 h-4 mr-2" aria-hidden="true" />
                   {item.label}
                 </Button>
               </Link>
@@ -77,22 +75,22 @@ export function Navbar() {
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-gray-900 border-t border-gray-800 overflow-hidden"
+            className="md:hidden bg-gray-800 border-t border-gray-700 overflow-hidden"
           >
-            <div className="px-4 py-4 space-y-2">
+            <div className="px-4 py-3 space-y-2">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
                   onClick={() => setIsOpen(false)}
                   className={cn(
-                    'flex items-center px-4 py-3 rounded-xl text-sm font-bold transition-all',
+                    'flex items-center px-3 py-2 rounded-md text-sm font-medium transition-colors',
                     isActive(item.path)
-                      ? 'bg-blue-600 text-white shadow-lg shadow-blue-900/20'
-                      : 'text-gray-400 hover:text-white hover:bg-gray-800 border border-gray-800'
+                      ? 'bg-blue-600 text-white'
+                      : 'text-gray-300 hover:text-white hover:bg-gray-700'
                   )}
                 >
-                  <item.icon className="w-5 h-5 mr-3" aria-hidden="true" />
+                  <item.icon className="w-4 h-4 mr-3" aria-hidden="true" />
                   {item.label}
                 </Link>
               ))}
