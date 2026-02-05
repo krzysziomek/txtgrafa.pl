@@ -38,32 +38,6 @@ export function Index() {
           <DownloadSection />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl mx-auto">
-          <AnimatedItem className="flex flex-col items-center text-center p-4">
-            <div className="p-3 bg-green-500/10 rounded-full mb-3">
-              <Zap className="w-5 h-5 text-green-400" aria-hidden="true" />
-            </div>
-            <h3 className="font-medium text-gray-200 mb-1">Natychmiastowe pobieranie</h3>
-            <p className="text-sm text-gray-500">Bez rejestracji, bez oczekiwania</p>
-          </AnimatedItem>
-          
-          <AnimatedItem className="flex flex-col items-center text-center p-4">
-            <div className="p-3 bg-blue-500/10 rounded-full mb-3">
-              <Shield className="w-5 h-5 text-blue-400" aria-hidden="true" />
-            </div>
-            <h3 className="font-medium text-gray-200 mb-1">100% Prywatności</h3>
-            <p className="text-sm text-gray-500">Zero cookies, zero tracking</p>
-          </AnimatedItem>
-          
-          <AnimatedItem className="flex flex-col items-center text-center p-4">
-            <div className="p-3 bg-purple-500/10 rounded-full mb-3">
-              <Package className="w-5 h-5 text-purple-400" aria-hidden="true" />
-            </div>
-            <h3 className="font-medium text-gray-200 mb-1">Regularne aktualizacje</h3>
-            <p className="text-sm text-gray-500">Wsparcie dla najnowszych wersji MC</p>
-          </AnimatedItem>
-        </div>
-
       </div>
     </div>
   );
