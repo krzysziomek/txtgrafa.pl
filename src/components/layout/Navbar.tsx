@@ -6,8 +6,8 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { path: '/paczka', label: 'Jak korzystać?', icon: Package },
-  { path: '/rozne', label: 'Rzeczy Grafa', icon: Sparkles },
+  { path: '/paczka', label: 'Paczka', icon: Package },
+  { path: '/rozne', label: 'Różne', icon: Sparkles },
 ];
 
 export function Navbar() {
@@ -15,6 +15,11 @@ export function Navbar() {
   const location = useLocation();
 
   const isActive = (path: string) => location.pathname === path;
+  
+  // Use base URL for assets to ensure they load on subdirectories like GitHub Pages
+  // Casting to any to resolve TypeScript error regarding import.meta.env
+  const baseUrl = (import.meta as any).env?.BASE_URL || '/';
+  const logoPath = `${baseUrl}graf.svg`.replace(/\/+/g, '/');
 
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-950/75 backdrop-blur-xl border-b border-white/10">
@@ -28,10 +33,16 @@ export function Navbar() {
             <div className="relative">
               <div className="absolute inset-0 bg-blue-500/25 blur-lg rounded-full group-hover:bg-blue-500/45 transition-all" />
               <img
-                src="/pliki/graf.svg"
+                src={logoPath}
                 alt="Logo"
                 className="h-10 w-10 relative z-10 drop-shadow-2xl"
                 aria-hidden="true"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  if (target.src !== 'graf.svg') {
+                    target.src = 'graf.svg'; 
+                  }
+                }}
               />
             </div>
             <span className="font-black text-xl tracking-tighter hidden sm:inline bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300 dr-readable">
@@ -45,7 +56,7 @@ export function Navbar() {
                 <Button
                   variant="ghost"
                   className={cn(
-                    'h-10 px-5 rounded-xl font-extrabold bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-[0_12px_30px_-14px_rgba(99,102,241,0.9)] border border-white/10',
+                    'relative h-10 px-5 font-extrabold transition-all duration-300 rounded-xl border shadow-sm',
                     'hover:shadow-[0_10px_30px_-12px_rgba(59,130,246,0.55)]',
                     isActive(item.path)
                       ? 'bg-gradient-to-r from-blue-600/25 to-indigo-600/20 border-blue-500/60 text-blue-200 shadow-[0_0_0_1px_rgba(59,130,246,0.25),0_12px_30px_-16px_rgba(59,130,246,0.6)]'
@@ -66,6 +77,14 @@ export function Navbar() {
                 </Button>
               </Link>
             ))}
+
+            <Link to="/helikopter">
+              <Button
+                className="h-10 px-5 rounded-xl font-extrabold bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-[0_12px_30px_-14px_rgba(99,102,241,0.9)] border border-white/10"
+              >
+                Discord
+              </Button>
+            </Link>
           </div>
 
           <Button
@@ -108,6 +127,14 @@ export function Navbar() {
                   {item.label}
                 </Link>
               ))}
+
+              <Link
+                to="/helikopter"
+                onClick={() => setIsOpen(false)}
+                className="flex items-center px-4 py-3 rounded-xl text-base font-extrabold transition-all border bg-gradient-to-r from-indigo-600 to-blue-600 text-white border-white/10 shadow-[0_10px_30px_-18px_rgba(99,102,241,0.9)]"
+              >
+                Discord
+              </Link>
             </div>
           </motion.div>
         )}
