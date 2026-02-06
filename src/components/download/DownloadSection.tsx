@@ -22,10 +22,11 @@ export function DownloadSection() {
   const handleDownload = useCallback(() => {
     try {
       if (isExternalRedirect) {
-        window.location.href = 'https://modrinth.com/resourcepack/glowing-ores!';
+        window.location.href = 'https://modrinth.com/resourcepack/new-glowing-ores';
         return;
       }
 
+      // Validate the file exists in our data before processing
       const categoryFiles = filesByCategory[category];
       const fileExists = categoryFiles.some(f => f.file === selectedFile);
       
@@ -37,6 +38,7 @@ export function DownloadSection() {
       const path = getDownloadPath(category, selectedFile);
       
       if (selectedFile.endsWith('.html')) {
+        // Additional validation for HTML redirects
         if (!isValidHtmlRedirect(selectedFile)) {
           console.error('Invalid HTML redirect attempted');
           return;
