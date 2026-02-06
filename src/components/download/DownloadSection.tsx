@@ -17,8 +17,15 @@ export function DownloadSection() {
     setSelectedFile(filesByCategory[newCategory][0].file);
   }, []);
 
+  const isExternalRedirect = selectedFile === 'new.html';
+
   const handleDownload = useCallback(() => {
     try {
+      if (isExternalRedirect) {
+        window.location.href = 'https://modrinth.com/resourcepack/new-glowing-ores';
+        return;
+      }
+
       // Validate the file exists in our data before processing
       const categoryFiles = filesByCategory[category];
       const fileExists = categoryFiles.some(f => f.file === selectedFile);
@@ -48,7 +55,7 @@ export function DownloadSection() {
     } catch (error) {
       console.error('Download error:', error);
     }
-  }, [category, selectedFile]);
+  }, [category, selectedFile, isExternalRedirect]);
 
   const currentFiles = filesByCategory[category];
 
@@ -72,13 +79,24 @@ export function DownloadSection() {
             onClick={handleDownload}
             className="w-full sm:w-auto sm:min-w-[280px] bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-bold py-7 text-xl rounded-2xl shadow-[0_10px_40px_-10px_rgba(16,185,129,0.3)] transition-all hover:shadow-[0_20px_50px_-10px_rgba(16,185,129,0.4)] border-none"
           >
-            <Download className="w-6 h-6 mr-3" aria-hidden="true" />
-            Pobierz
+            {isExternalRedirect ? (
+              <>
+                <ExternalLink className="w-6 h-6 mr-3" aria-hidden="true" />
+                Przejdź
+              </>
+            ) : (
+              <>
+                <Download className="w-6 h-6 mr-3" aria-hidden="true" />
+                Pobierz
+              </>
+            )}
           </ConfettiButton>
           
           <p className="mt-6 text-sm text-gray-500 flex items-center justify-center gap-2">
             <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
-            Pobieranie bezpośrednie bez reklam i śledzenia
+            {isExternalRedirect 
+              ? 'Przekierowanie do oficjalnej strony Modrinth' 
+              : 'Pobieranie bezpośrednie bez reklam i śledzenia'}
           </p>
         </div>
       </AnimatedItem>
