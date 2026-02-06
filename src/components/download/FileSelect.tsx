@@ -37,10 +37,7 @@ export function FileSelect({ files, value, onChange, disabled }: FileSelectProps
 
   return (
     <div className="space-y-4 text-center">
-      <label 
-        className="block text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400"
-        style={{ WebkitTextFillColor: 'transparent', forcedColorAdjust: 'none' }}
-      >
+      <label className="block text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400">
         Krok 2: Wybierz wersję
       </label>
       
