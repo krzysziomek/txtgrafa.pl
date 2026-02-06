@@ -1,4 +1,3 @@
-import { motion } from 'framer-motion';
 import { DownloadSection } from '@/components/download/DownloadSection';
 import { AnimatedItem } from '@/components/motion/AnimatedPage';
 
@@ -26,14 +25,9 @@ export function Index() {
           </AnimatedItem>
         </div>
 
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-          className="glass-card rounded-[2.5rem] p-8 md:p-14"
-        >
+        <AnimatedItem className="glass-card rounded-[2.5rem] p-8 md:p-14">
           <DownloadSection />
-        </motion.div>
+        </AnimatedItem>
 
         <AnimatedItem>
           <div className="flex flex-wrap items-center justify-center gap-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
