@@ -95,27 +95,18 @@ export function Paczka() {
         </AnimatedItem>
 
         <AnimatedItem>
-          <Card title="Wsparcie techniczne" icon={Code}>
+          <Card title="Kontakt" icon={Code}>
             <p>
-              Masz problem z instalacją? Skontaktuj się z nami bezpośrednio:
+              Masz pomysły zmian na stronie? Skontaktuj się z nami bezpośrednio:
             </p>
             <div className="mt-4 flex flex-wrap gap-3">
               <a
-                href="mailto:kontakt@txtgrafa.pl?subject=Wsparcie%20techniczne%20-%20Paczka%20Grafa"
+                href="https://discord.gg/graf"
                 className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-bold"
               >
-                Wyślij email
-              </a>
-              <a
-                href="/helikopter"
-                className="inline-flex items-center px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-200 rounded-lg transition-colors border border-white/5"
-              >
-                Discord
+                Discord Grafa
               </a>
             </div>
-            <p className="mt-3 text-xs text-gray-500">
-              Nie zbieramy żadnych danych osobowych. Wszystkie zapytania są obsługiwane anonimowo.
-            </p>
           </Card>
         </AnimatedItem>
       </div>
