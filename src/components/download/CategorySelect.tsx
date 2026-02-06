@@ -22,7 +22,7 @@ export function CategorySelect({ value, onChange }: CategorySelectProps) {
     <div className="space-y-8 text-center relative">
       <label 
         id="category-label"
-        className="block text-xl font-bold text-gradient-blue"
+        className="block text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400"
       >
         Krok 1: Wybierz kategorię
       </label>

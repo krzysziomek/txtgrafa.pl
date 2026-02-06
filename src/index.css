@@ -24,9 +24,6 @@
     --input: 217 32% 17%;
     --ring: 224 76% 48%;
     --radius: 1rem;
-    
-    /* Helps Dark Reader and browsers understand the theme */
-    color-scheme: dark;
   }
 
   * {
@@ -47,26 +44,7 @@
     @apply bg-gray-900/40 backdrop-blur-md border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
   }
   
-  /* More robust gradient text that resists Dark Reader overrides */
   .text-gradient {
-    @apply bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    /* Prevent Dark Reader from making it white/gray */
-    --darkreader-inline-color: transparent !important;
-  }
-
-  .text-gradient-indigo {
-    @apply bg-clip-text bg-gradient-to-r from-indigo-400 to-purple-400;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    --darkreader-inline-color: transparent !important;
-  }
-
-  .text-gradient-blue {
-    @apply bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400;
-    -webkit-text-fill-color: transparent;
-    color: transparent;
-    --darkreader-inline-color: transparent !important;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400;
   }
 }

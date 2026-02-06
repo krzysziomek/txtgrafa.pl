@@ -1,7 +1,6 @@
 import { motion } from 'framer-motion';
 import { DownloadSection } from '@/components/download/DownloadSection';
 import { AnimatedItem } from '@/components/motion/AnimatedPage';
-import { Sparkles } from 'lucide-react';
 
 export function Index() {
   return (
@@ -13,25 +12,17 @@ export function Index() {
       <div className="w-full max-w-4xl mx-auto text-center space-y-16 relative z-10">
         
         <div className="space-y-6">
-          <motion.div
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.6, type: "spring" }}
-            className="inline-flex items-center justify-center p-3 bg-gradient-to-tr from-blue-500/20 to-purple-500/20 border border-white/10 rounded-2xl mb-4"
-          >
-            <Sparkles className="w-10 h-10 text-blue-400" aria-hidden="true" />
-          </motion.div>
+
           
           <AnimatedItem>
             <h1 className="text-5xl md:text-8xl font-black tracking-tight text-white">
-              Paczka <span className="text-gradient">Grafa</span>
+              Paczka <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400">Grafa</span>
             </h1>
           </AnimatedItem>
           
           <AnimatedItem>
             <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto font-medium leading-relaxed">
               Odkryj najlepsze paczki zasobów Minecraft. 
-              <span className="text-white"> Piękne, szybkie i darmowe.</span>
             </p>
           </AnimatedItem>
         </div>

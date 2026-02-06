@@ -17,10 +17,9 @@ const miscItems: MiscItem[] = [
     title: 'Tapeta',
     icon: Wallpaper,
     content: 'Tapeta Grafa na pulpit',
-    links: [
-      { text: 'Pepe (żaba)', url: 'https://steamcommunity.com/sharedfiles/filedetails/?id=1406608111', external: true },
-      { text: 'Honda (samochód)', url: 'https://x.com/smietankowedni/status/1733824774709686505', external: true },
-    ],
+    link: 'https://steamcommunity.com/sharedfiles/filedetails/?id=1406608111',
+    linkText: 'Steam Workshop',
+    external: true,
   },
   {
     title: 'Lunar Client',

@@ -35,6 +35,10 @@ export function Helikopter() {
         <h1 className="text-2xl font-bold text-gray-100 mb-2">
           Przekierowanie do Discord
         </h1>
+        
+        <p className="text-gray-400 mb-6">
+          Zapraszamy na serwer Discord! Zostaniesz przekierowany za chwilę...
+        </p>
 
         <div className="flex items-center justify-center space-x-2 mb-6 text-indigo-400">
           <Timer className="w-5 h-5" aria-hidden="true" />
@@ -53,6 +57,7 @@ export function Helikopter() {
         <p className="mt-6 text-xs text-gray-500">
           Jeśli przekierowanie nie działa, kliknij przycisk powyżej.
           <br />
+          Nie zbieramy żadnych danych podczas tego procesu.
         </p>
       </motion.div>
     </div>
