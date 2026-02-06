@@ -5,7 +5,7 @@ import { CategorySelect } from './CategorySelect';
 import { FileSelect } from './FileSelect';
 import { ConfettiButton } from '@/components/motion/ConfettiButton';
 import { CategoryKey, filesByCategory } from '@/lib/data';
-import { getDownloadPath } from '@/lib/utils';
+import { getDownloadPath, isValidHtmlRedirect } from '@/lib/utils';
 import { AnimatedItem } from '@/components/motion/AnimatedPage';
 
 export function DownloadSection() {
@@ -18,17 +18,35 @@ export function DownloadSection() {
   }, []);
 
   const handleDownload = useCallback(() => {
-    const path = getDownloadPath(category, selectedFile);
-    
-    if (selectedFile.endsWith('.html')) {
-      window.location.href = path;
-    } else {
-      const link = document.createElement('a');
-      link.href = path;
-      link.download = selectedFile;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+    try {
+      // Validate the file exists in our data before processing
+      const categoryFiles = filesByCategory[category];
+      const fileExists = categoryFiles.some(f => f.file === selectedFile);
+      
+      if (!fileExists) {
+        console.error('File not found in category');
+        return;
+      }
+      
+      const path = getDownloadPath(category, selectedFile);
+      
+      if (selectedFile.endsWith('.html')) {
+        // Additional validation for HTML redirects
+        if (!isValidHtmlRedirect(selectedFile)) {
+          console.error('Invalid HTML redirect attempted');
+          return;
+        }
+        window.location.href = path;
+      } else {
+        const link = document.createElement('a');
+        link.href = path;
+        link.download = selectedFile;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }
+    } catch (error) {
+      console.error('Download error:', error);
     }
   }, [category, selectedFile]);
 
@@ -65,7 +83,7 @@ export function DownloadSection() {
         </div>
       </AnimatedItem>
 
-      {selectedFile.endsWith('.html') && (
+      {selectedFile.endsWith('.html') && isValidHtmlRedirect(selectedFile) && (
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}

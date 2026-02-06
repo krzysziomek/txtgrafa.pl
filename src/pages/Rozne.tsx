@@ -90,7 +90,8 @@ export function Rozne() {
                       href={link.url}
                       className="inline-flex items-center px-3 py-1.5 bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 rounded-md text-sm transition-colors"
                       target={link.external ? '_blank' : undefined}
-                      rel={link.external ? 'noopener noreferrer' : undefined}
+                      rel={link.external ? 'noopener noreferrer nofollow' : undefined}
+                      referrerPolicy={link.external ? 'no-referrer' : undefined}
                     >
                       {link.text}
                       {link.external && <ExternalLink className="w-3 h-3 ml-1" />}
@@ -102,7 +103,8 @@ export function Rozne() {
                   href={item.link}
                   className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm"
                   target={item.external ? '_blank' : undefined}
-                  rel={item.external ? 'noopener noreferrer' : undefined}
+                  rel={item.external ? 'noopener noreferrer nofollow' : undefined}
+                  referrerPolicy={item.external ? 'no-referrer' : undefined}
                 >
                   {item.linkText}
                   {item.external && <ExternalLink className="w-4 h-4 ml-2" />}

@@ -33,7 +33,8 @@ export function Paczka() {
                     href="https://optifine.net/downloads" 
                     className="text-blue-400 hover:text-blue-300 inline-flex items-center transition-colors font-bold"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener noreferrer nofollow"
+                    referrerPolicy="no-referrer"
                   >
                     Optifine <ExternalLink className="w-3 h-3 ml-1" />
                   </a>.
@@ -50,7 +51,8 @@ export function Paczka() {
                     href="https://modrinth.com/mod/entitytexturefeatures" 
                     className="text-blue-400 hover:text-blue-300 inline-flex items-center transition-colors font-bold block mt-1"
                     target="_blank"
-                    rel="noopener noreferrer"
+                    rel="noopener noreferrer nofollow"
+                    referrerPolicy="no-referrer"
                   >
                     Entity Texture Features <ExternalLink className="w-3 h-3 ml-1" />
                   </a>
@@ -61,7 +63,15 @@ export function Paczka() {
             
             <p className="mt-4 text-xs text-gray-500 italic">
               Jeśli podczas instalacji Optifine wystąpi błąd, upewnij się że masz zainstalowaną 
-              <a href="https://java.com/en/download/" className="text-blue-400/60 hover:text-blue-400 mx-1">Javę</a>.
+              <a 
+                href="https://java.com/en/download/" 
+                className="text-blue-400/60 hover:text-blue-400 mx-1"
+                target="_blank"
+                rel="noopener noreferrer nofollow"
+                referrerPolicy="no-referrer"
+              >
+                Javę
+              </a>.
             </p>
           </Card>
         </AnimatedItem>
@@ -77,7 +87,8 @@ export function Paczka() {
                 href="https://namemc.com/profile/4fa3d966-93d3-4e7d-9618-5f6532864a53"
                 className="text-blue-400 hover:text-blue-300 transition-colors"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
+                referrerPolicy="no-referrer"
               >
                 Grafa
               </a>.
@@ -86,7 +97,8 @@ export function Paczka() {
                 href="https://namemc.com/profile/a9c21032-2dc7-41f9-a7c4-da0430c0ab2a"
                 className="text-blue-400 hover:text-blue-300 transition-colors"
                 target="_blank"
-                rel="noopener noreferrer"
+                rel="noopener noreferrer nofollow"
+                referrerPolicy="no-referrer"
               >
                 Masta
               </a>.
