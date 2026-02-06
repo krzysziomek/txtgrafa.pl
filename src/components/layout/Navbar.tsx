@@ -6,8 +6,8 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 const navItems = [
-  { path: '/paczka', label: 'Paczka', icon: Package },
-  { path: '/rozne', label: 'Różne', icon: Sparkles },
+  { path: '/paczka', label: 'Jak korzystać?', icon: Package },
+  { path: '/rozne', label: 'Rzeczy Grafa', icon: Sparkles },
 ];
 
 export function Navbar() {
