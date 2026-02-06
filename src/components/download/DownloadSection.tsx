@@ -55,7 +55,7 @@ export function DownloadSection() {
             className="w-full sm:w-auto sm:min-w-[280px] bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-500 hover:to-emerald-500 text-white font-bold py-7 text-xl rounded-2xl shadow-[0_10px_40px_-10px_rgba(16,185,129,0.3)] transition-all hover:shadow-[0_20px_50px_-10px_rgba(16,185,129,0.4)] border-none"
           >
             <Download className="w-6 h-6 mr-3" aria-hidden="true" />
-            Pobierz Teraz
+            Pobierz
           </ConfettiButton>
           
           <p className="mt-6 text-sm text-gray-500 flex items-center justify-center gap-2">
