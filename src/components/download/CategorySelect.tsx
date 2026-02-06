@@ -23,6 +23,7 @@ export function CategorySelect({ value, onChange }: CategorySelectProps) {
       <label 
         id="category-label"
         className="block text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400"
+        style={{ WebkitTextFillColor: 'transparent', forcedColorAdjust: 'none' }}
       >
         Krok 1: Wybierz kategorię
       </label>

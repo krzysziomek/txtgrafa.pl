@@ -46,5 +46,20 @@
   
   .text-gradient {
     @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400;
+    -webkit-text-fill-color: transparent;
+    forced-color-adjust: none;
+  }
+  
+  /* Dark Reader compatibility for all gradient text elements */
+  [class*="bg-clip-text"] {
+    -webkit-text-fill-color: transparent;
+    forced-color-adjust: none;
+  }
+  
+  /* Ensure text remains visible with explicit fallback */
+  .text-gradient-fallback {
+    color: #60a5fa;
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400;
+    -webkit-text-fill-color: transparent;
   }
 }
