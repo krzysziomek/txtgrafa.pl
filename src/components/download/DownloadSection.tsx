@@ -22,7 +22,7 @@ export function DownloadSection() {
   const handleDownload = useCallback(() => {
     try {
       if (isExternalRedirect) {
-        window.location.href = 'https://modrinth.com/resourcepack/new-glowing-ores';
+        window.location.href = 'https://modrinth.com/resourcepack/glowing-ores!';
         return;
       }
 
