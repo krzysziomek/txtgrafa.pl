@@ -28,7 +28,7 @@ export function Navbar() {
             <div className="relative">
               <div className="absolute inset-0 bg-blue-500/20 blur-lg rounded-full group-hover:bg-blue-500/40 transition-all" />
               <img 
-                src="/graf.svg" 
+                src="/pliki/graf.svg" 
                 alt="Logo" 
                 className="h-10 w-10 relative z-10 drop-shadow-2xl"
                 aria-hidden="true"
