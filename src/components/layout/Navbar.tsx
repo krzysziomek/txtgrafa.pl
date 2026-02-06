@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Package, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
+import grafLogo from '@/graf.svg';
 
 const navItems = [
   { path: '/paczka', label: 'Jak korzystać?', icon: Package },
