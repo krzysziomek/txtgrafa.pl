@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/Card';
 import { AnimatedItem } from '@/components/motion/AnimatedPage';
-import { HelpCircle, Heart, Code, ExternalLink, Cpu } from 'lucide-react';
+import { HelpCircle, Heart, ExternalLink, Cpu } from 'lucide-react';
 
 export function Paczka() {
   return (
