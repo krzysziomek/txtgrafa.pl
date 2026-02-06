@@ -1,4 +1,4 @@
-import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Layout } from '@/components/layout/Layout';
 import { Index } from '@/pages/Index';
 import { Paczka } from '@/pages/Paczka';
@@ -7,12 +7,7 @@ import { Helikopter } from '@/pages/Helikopter';
 
 function App() {
   return (
-    <HashRouter
-      future={{
-        v7_startTransition: true,
-        v7_relativeSplatPath: true,
-      }}
-    >
+    <BrowserRouter>
       <Layout>
         <Routes>
           <Route path="/" element={<Index />} />
@@ -22,7 +17,7 @@ function App() {
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </Layout>
-    </HashRouter>
+    </BrowserRouter>
   );
 }
 
