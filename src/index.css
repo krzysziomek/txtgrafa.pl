@@ -24,7 +24,7 @@
     --input: 217 32% 17%;
     --ring: 224 76% 48%;
     --radius: 1rem;
-    
+
     /* Helps Dark Reader and browsers understand the theme */
     color-scheme: dark;
   }
@@ -35,7 +35,7 @@
 
   body {
     @apply bg-[#050b18] text-gray-200 antialiased;
-    background-image: 
+    background-image:
       radial-gradient(at 0% 0%, rgba(37, 99, 235, 0.15) 0px, transparent 50%),
       radial-gradient(at 100% 100%, rgba(147, 51, 234, 0.1) 0px, transparent 50%);
     background-attachment: fixed;
@@ -46,7 +46,7 @@
   .glass-card {
     @apply bg-gray-900/40 backdrop-blur-md border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
   }
-  
+
   /* More robust gradient text that resists Dark Reader overrides */
   .text-gradient {
     @apply bg-clip-text bg-gradient-to-r from-blue-400 via-indigo-400 to-purple-400;
@@ -68,5 +68,21 @@
     -webkit-text-fill-color: transparent;
     color: transparent;
     --darkreader-inline-color: transparent !important;
+  }
+
+  /* Dark Reader sometimes breaks bg-clip-text by forcing fill colors.
+     This provides a readable fallback when Dark Reader is active. */
+  [data-darkreader-scheme] .text-gradient,
+  [data-darkreader-scheme] .text-gradient-indigo,
+  [data-darkreader-scheme] .text-gradient-blue {
+    background-image: none !important;
+    -webkit-text-fill-color: currentColor !important;
+    color: rgb(226 232 240) !important; /* slate-200 */
+  }
+
+  /* Any element that relies on text-transparent can be made readable under Dark Reader */
+  [data-darkreader-scheme] .dr-readable {
+    -webkit-text-fill-color: currentColor !important;
+    color: rgb(226 232 240) !important;
   }
 }
