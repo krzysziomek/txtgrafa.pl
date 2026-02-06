@@ -18,7 +18,7 @@ export function Paczka() {
             <p>
               Aby korzystać z paczki zasobów Grafa należy pobrać wybrane przez siebie paczki, 
               następnie przenieść je do folderu <strong>resourcepacks</strong>, do którego dostęp 
-              możemy uzyskać klikając przycisk <strong>Otwórz folder z paczkami zasobów</strong> 
+              możemy uzyskać klikając przycisk <strong>Otwórz folder z paczkami zasobów </strong> 
               zlokalizowany na dole ekranu w zakładce Paczki Zasobów w ustawieniach Minecrafta.
             </p>
             
