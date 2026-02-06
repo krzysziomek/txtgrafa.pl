@@ -40,20 +40,21 @@ export function Paczka() {
                 </p>
               </div>
 
-              <div className="p-4 bg-blue-500/5 rounded-lg border border-blue-500/20">
-                <p className="font-medium text-blue-300 mb-2 flex items-center gap-2">
+              <div className="p-4 bg-gray-900/50 rounded-lg border border-gray-700">
+                <p className="font-medium text-gray-200 mb-2 flex items-center gap-2">
                   <Cpu className="w-4 h-4" /> Fabric:
                 </p>
-                <p className="text-sm text-gray-400">
-                  Możesz również używać paczki na silniku Fabric. Wymagany jest wtedy mod: 
+                <p className="text-sm">
+                  Możesz również używać paczki na silniku Fabric. Wymagany jest wtedy mod{' '}
                   <a 
                     href="https://modrinth.com/mod/entitytexturefeatures" 
                     className="text-blue-400 hover:text-blue-300 inline-flex items-center transition-colors font-bold block mt-1"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    [ETF] Entity Texture Features <ExternalLink className="w-3 h-3 ml-1" />
+                    Entity Texture Features <ExternalLink className="w-3 h-3 ml-1" />
                   </a>
+                  .
                 </p>
               </div>
             </div>
@@ -68,8 +69,7 @@ export function Paczka() {
         <AnimatedItem>
           <Card title="Czy Paczka Grafa jest darmowa?" icon={Heart}>
             <p>
-              Tak, Paczka Grafa jest całkowicie darmowa. Zachęcamy jednak do wsparcia 
-              naszego projektu, jeśli uważasz go za przydatny.
+              Tak, Paczka Grafa jest całkowicie darmowa.
             </p>
             <p className="mt-3 text-sm text-gray-400">
               Pierwsze wersje paczki były tworzone przez{' '}
@@ -94,23 +94,6 @@ export function Paczka() {
           </Card>
         </AnimatedItem>
 
-        <AnimatedItem>
-          <Card title="Kontakt" icon={Code}>
-            <p>
-              Masz pomysły zmian na stronie? Skontaktuj się z nami bezpośrednio:
-            </p>
-            <div className="mt-4 flex flex-wrap gap-3">
-              <a
-                href="https://discord.gg/graf"
-                className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors font-bold"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Discord Grafa
-              </a>
-            </div>
-          </Card>
-        </AnimatedItem>
       </div>
     </div>
   );
