@@ -33,7 +33,7 @@ export function Helikopter() {
         </div>
 
         <h1 className="text-2xl font-bold text-gray-100 mb-2">
-          Przekierowanie do Discord
+          Przekierowanie do bota Discord
         </h1>
 
         <div className="flex items-center justify-center space-x-2 mb-6 text-indigo-400">

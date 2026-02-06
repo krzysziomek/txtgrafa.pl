@@ -45,7 +45,7 @@ export function Navbar() {
                 <Button
                   variant="ghost"
                   className={cn(
-                    'relative h-10 px-5 font-extrabold transition-all duration-300 rounded-xl border shadow-sm',
+                    'h-10 px-5 rounded-xl font-extrabold bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-[0_12px_30px_-14px_rgba(99,102,241,0.9)] border border-white/10',
                     'hover:shadow-[0_10px_30px_-12px_rgba(59,130,246,0.55)]',
                     isActive(item.path)
                       ? 'bg-gradient-to-r from-blue-600/25 to-indigo-600/20 border-blue-500/60 text-blue-200 shadow-[0_0_0_1px_rgba(59,130,246,0.25),0_12px_30px_-16px_rgba(59,130,246,0.6)]'
@@ -66,14 +66,6 @@ export function Navbar() {
                 </Button>
               </Link>
             ))}
-
-            <Link to="/helikopter">
-              <Button
-                className="h-10 px-5 rounded-xl font-extrabold bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-[0_12px_30px_-14px_rgba(99,102,241,0.9)] border border-white/10"
-              >
-                Discord
-              </Button>
-            </Link>
           </div>
 
           <Button
@@ -116,14 +108,6 @@ export function Navbar() {
                   {item.label}
                 </Link>
               ))}
-
-              <Link
-                to="/helikopter"
-                onClick={() => setIsOpen(false)}
-                className="flex items-center px-4 py-3 rounded-xl text-base font-extrabold transition-all border bg-gradient-to-r from-indigo-600 to-blue-600 text-white border-white/10 shadow-[0_10px_30px_-18px_rgba(99,102,241,0.9)]"
-              >
-                Discord
-              </Link>
             </div>
           </motion.div>
         )}
