@@ -54,8 +54,10 @@ export const miscItems = [
   {
     title: 'Tapeta',
     content: 'Tapeta Grafa:',
-    link: 'https://steamcommunity.com/sharedfiles/filedetails/?id=1406608111',
-    linkText: 'Steam Workshop',
+    links: [
+      { text: 'Pepe (żaba)', url: 'https://steamcommunity.com/sharedfiles/filedetails/?id=1406608111' },
+      { text: 'Honda (samochód)', url: 'https://x.com/i/status/1733824774709686505' },
+    ],
   },
   {
     title: 'Lunar Client',
