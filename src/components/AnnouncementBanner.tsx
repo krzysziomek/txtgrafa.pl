@@ -43,7 +43,7 @@ const AnnouncementBanner = () => {
                 <Info className="w-5 h-5 text-white" />
               </div>
               <p className="text-sm font-medium leading-tight">
-                Teraz już wszystko działa. za utrudnienia przepraszamy
+                Teraz już wszystko działa. popsute pliki pobierane od 
               </p>
             </div>
             <button
