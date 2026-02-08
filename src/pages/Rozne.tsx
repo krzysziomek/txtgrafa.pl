@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/Card';
 import { AnimatedItem } from '@/components/motion/AnimatedPage';
-import { Wallpaper, Wrench, Shirt, Cpu, Gamepad2, Monitor, ExternalLink, AlertTriangle } from 'lucide-react';
+import { Wallpaper, Wrench, Shirt, Cpu, Gamepad2, Monitor, ExternalLink } from 'lucide-react';
 
 interface MiscItem {
   title: string;
@@ -10,7 +10,6 @@ interface MiscItem {
   linkText?: string;
   external?: boolean;
   links?: { text: string; url: string; external?: boolean }[];
-  warning?: string;
 }
 
 const miscItems: MiscItem[] = [
@@ -53,8 +52,8 @@ const miscItems: MiscItem[] = [
     content: 'Wymagane: Fabric. Paczka modów dla serii.',
     links: [
       { text: 'Fabric', url: 'https://fabricmc.net/', external: true },
+      { text: 'Paczka modów', url: '/pliki/kwadratowa-masakra-mody-FABRIC-1.17.zip', external: false },
     ],
-    warning: 'Paczka tymczasowo niedostępna (zbyt duży rozmiar pliku).'
   },
   {
     title: 'Strumyk Modowo',
@@ -62,10 +61,12 @@ const miscItems: MiscItem[] = [
     content: 'Wymagane: Forge. Paczka modów dla serii.',
     links: [
       { text: 'Forge', url: 'https://files.minecraftforge.net/', external: true },
+      { text: 'Paczka modów', url: 'https://github.com/krzysziomek/txtgrafa.pl/raw/refs/heads/main/pliki/strumyk-modowo1.16.3.zip', external: true },
     ],
-    warning: 'Paczka tymczasowo niedostępna (zbyt duży rozmiar pliku).'
   },
 ];
+
+const BUTTON_CLASS = "inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all text-sm font-medium gap-2 shadow-sm hover:shadow-md active:scale-95";
 
 export function Rozne() {
   return (
@@ -81,43 +82,36 @@ export function Rozne() {
         {miscItems.map((item) => (
           <AnimatedItem key={item.title}>
             <Card title={item.title} icon={item.icon}>
-              <p className="mb-4">{item.content}</p>
-              
-              {item.warning && (
-                <div className="flex items-center gap-2 p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg mb-4 text-xs text-amber-200">
-                  <AlertTriangle className="w-4 h-4 flex-shrink-0" />
-                  {item.warning}
-                </div>
-              )}
+              <p className="mb-4 text-gray-300">{item.content}</p>
 
-              {item.links ? (
-                <div className="flex flex-wrap gap-2">
-                  {item.links.map((link) => (
+              <div className="flex flex-wrap gap-3">
+                {item.links ? (
+                  item.links.map((link) => (
                     <a
                       key={link.text}
                       href={link.url}
-                      className="inline-flex items-center px-3 py-1.5 bg-blue-600/20 hover:bg-blue-600/30 text-blue-400 rounded-md text-sm transition-colors"
+                      className={BUTTON_CLASS}
                       target={link.external ? '_blank' : undefined}
                       rel={link.external ? 'noopener noreferrer nofollow' : undefined}
                       referrerPolicy={link.external ? 'no-referrer' : undefined}
                     >
                       {link.text}
-                      {link.external && <ExternalLink className="w-3 h-3 ml-1" />}
+                      {link.external && <ExternalLink className="w-3.5 h-3.5" />}
                     </a>
-                  ))}
-                </div>
-              ) : item.link ? (
-                <a
-                  href={item.link}
-                  className="inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors text-sm"
-                  target={item.external ? '_blank' : undefined}
-                  rel={item.external ? 'noopener noreferrer nofollow' : undefined}
-                  referrerPolicy={item.external ? 'no-referrer' : undefined}
-                >
-                  {item.linkText}
-                  {item.external && <ExternalLink className="w-4 h-4 ml-2" />}
-                </a>
-              ) : null}
+                  ))
+                ) : item.link ? (
+                  <a
+                    href={item.link}
+                    className={BUTTON_CLASS}
+                    target={item.external ? '_blank' : undefined}
+                    rel={item.external ? 'noopener noreferrer nofollow' : undefined}
+                    referrerPolicy={item.external ? 'no-referrer' : undefined}
+                  >
+                    {item.linkText}
+                    {item.external && <ExternalLink className="w-3.5 h-3.5" />}
+                  </a>
+                ) : null}
+              </div>
             </Card>
           </AnimatedItem>
         ))}
