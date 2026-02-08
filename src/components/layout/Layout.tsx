@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import { Navbar } from './Navbar';
 import { AnimatedPage } from '@/components/motion/AnimatedPage';
+import AnnouncementBanner from '../AnnouncementBanner';
 
 interface LayoutProps {
   children: ReactNode;
@@ -17,6 +18,7 @@ export function Layout({ children }: LayoutProps) {
       </a>
       
       <Navbar />
+      <AnnouncementBanner />
       
       <main 
         id="main-content"
