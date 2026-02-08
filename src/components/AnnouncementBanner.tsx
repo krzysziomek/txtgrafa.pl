@@ -43,7 +43,7 @@ const AnnouncementBanner = () => {
                 <Info className="w-5 h-5 text-white" />
               </div>
               <p className="text-sm font-medium leading-tight">
-                Teraz już wszystko działa. popsute pliki pobierane od 
+                Teraz już wszystko działa. Przepraszamy za popsute pliki pobierane od 5.02.2026 do 8.02.2026
               </p>
             </div>
             <button
