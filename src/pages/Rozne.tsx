@@ -1,6 +1,6 @@
 import { Card } from '@/components/ui/Card';
 import { AnimatedItem } from '@/components/motion/AnimatedPage';
-import { Wallpaper, Wrench, Shirt, Cpu, Gamepad2, Monitor, ExternalLink } from 'lucide-react';
+import { Wallpaper, Wrench, Shirt, Cpu, Gamepad2, Monitor, ExternalLink, AlertTriangle } from 'lucide-react';
 
 interface MiscItem {
   title: string;
@@ -10,6 +10,7 @@ interface MiscItem {
   linkText?: string;
   external?: boolean;
   links?: { text: string; url: string; external?: boolean }[];
+  warning?: string;
 }
 
 const miscItems: MiscItem[] = [
@@ -52,8 +53,8 @@ const miscItems: MiscItem[] = [
     content: 'Wymagane: Fabric. Paczka modów dla serii.',
     links: [
       { text: 'Fabric', url: 'https://fabricmc.net/', external: true },
-      { text: 'Paczka modów', url: '/pliki/kwadratowa-masakra-mody-FABRIC-1.17.zip', external: false },
     ],
+    warning: 'Paczka tymczasowo niedostępna (zbyt duży rozmiar pliku).'
   },
   {
     title: 'Strumyk Modowo',
@@ -61,8 +62,8 @@ const miscItems: MiscItem[] = [
     content: 'Wymagane: Forge. Paczka modów dla serii.',
     links: [
       { text: 'Forge', url: 'https://files.minecraftforge.net/', external: true },
-      { text: 'Paczka modów', url: '/pliki/strumyk-modowo1.16.3.zip', external: false },
     ],
+    warning: 'Paczka tymczasowo niedostępna (zbyt duży rozmiar pliku).'
   },
 ];
 
@@ -82,6 +83,13 @@ export function Rozne() {
             <Card title={item.title} icon={item.icon}>
               <p className="mb-4">{item.content}</p>
               
+              {item.warning && (
+                <div className="flex items-center gap-2 p-3 bg-amber-500/10 border border-amber-500/20 rounded-lg mb-4 text-xs text-amber-200">
+                  <AlertTriangle className="w-4 h-4 flex-shrink-0" />
+                  {item.warning}
+                </div>
+              )}
+
               {item.links ? (
                 <div className="flex flex-wrap gap-2">
                   {item.links.map((link) => (

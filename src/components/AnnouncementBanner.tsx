@@ -14,12 +14,10 @@ const AnnouncementBanner = () => {
   useEffect(() => {
     if (!isVisible) return;
 
-    // Close banner on any click anywhere in the document
     const handleGlobalClick = () => {
       closeBanner();
     };
 
-    // We use a small timeout to prevent the initial click (if any triggered this) from immediately closing it
     const timer = setTimeout(() => {
       window.addEventListener('click', handleGlobalClick);
     }, 100);
@@ -45,12 +43,12 @@ const AnnouncementBanner = () => {
                 <Info className="w-5 h-5 text-white" />
               </div>
               <p className="text-sm font-medium leading-tight">
-                Teraz już wszystko działa. Za popsute pliki przez ostatnie 2 dni przepraszamy :(
+                Teraz już wszystko działa. za utrudnienia przepraszamy
               </p>
             </div>
             <button
               onClick={(e) => {
-                e.stopPropagation(); // Prevent the global click from firing twice though it wouldn't matter
+                e.stopPropagation();
                 closeBanner();
               }}
               className="hover:bg-white/20 p-1 rounded-lg transition-colors"
