@@ -1,6 +1,7 @@
+"use client";
+
 import React from 'react';
 import { Navbar } from './Navbar';
-import { Footer } from './Footer';
 import { AnimatedPage } from '@/components/motion/AnimatedPage';
 
 interface LayoutProps {
@@ -16,7 +17,6 @@ export const Layout = ({ children }: LayoutProps) => {
           {children}
         </AnimatedPage>
       </main>
-      <Footer />
     </div>
   );
 };
