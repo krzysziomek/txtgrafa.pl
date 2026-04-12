@@ -1,22 +1,12 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Layout } from '@/components/layout/Layout';
-import { Index } from '@/pages/Index';
-import { Paczka } from '@/pages/Paczka';
-import { Rozne } from '@/pages/Rozne';
-import { Helikopter } from '@/pages/Helikopter';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Index } from "./pages/Index";
 
 function App() {
   return (
     <BrowserRouter>
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/paczka" element={<Paczka />} />
-          <Route path="/rozne" element={<Rozne />} />
-          <Route path="/helikopter" element={<Helikopter />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
-        </Routes>
-      </Layout>
+      <Routes>
+        <Route path="/" element={<Index />} />
+      </Routes>
     </BrowserRouter>
   );
 }
