@@ -61,7 +61,7 @@ const miscItems: MiscItem[] = [
     content: 'Wymagane: Forge. Paczka modów dla serii.',
     links: [
       { text: 'Forge', url: 'https://files.minecraftforge.net/', external: true },
-      { text: 'Paczka modów', url: 'https://github.com/krzysziomek/txtgrafa.pl/raw/refs/heads/main/pliki/strumyk-modowo1.16.3.zip', external: true },
+      { text: 'Paczka modów', url: '/pliki/strumyk-modowo1.16.3.zip', external: true },
     ],
   },
 ];
