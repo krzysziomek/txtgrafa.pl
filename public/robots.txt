@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /helikopter
+Disallow: /404
+
+Sitemap: https://txtgrafa.pl/sitemap.xml

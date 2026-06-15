@@ -4,8 +4,10 @@
   "version": "3.0.0",
   "type": "module",
   "scripts": {
+    "prebuild": "node scripts/generate-packs.js",
     "dev": "vite",
     "build": "tsc && vite build",
+    "postbuild": "node -e \"const fs = require('fs'); fs.copyFileSync('dist/index.html', 'dist/404.html'); console.log('Copied index.html to 404.html for SPA routing');\"",
     "preview": "vite preview",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
