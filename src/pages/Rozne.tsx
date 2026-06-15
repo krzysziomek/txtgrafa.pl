@@ -1,121 +1,92 @@
-import { Card } from '@/components/ui/Card';
-import { AnimatedItem } from '@/components/motion/AnimatedPage';
+import { Helmet } from 'react-helmet-async';
+import { Card } from '../components/ui/Card';
+import { miscItems } from '../lib/data';
 import { Wallpaper, Wrench, Shirt, Cpu, Gamepad2, Monitor, ExternalLink } from 'lucide-react';
 
-interface MiscItem {
-  title: string;
-  icon: typeof Wallpaper;
-  content: string;
-  link?: string;
-  linkText?: string;
-  external?: boolean;
-  links?: { text: string; url: string; external?: boolean }[];
-}
+// Icon mapper helper
+const icons: Record<string, typeof Wallpaper> = {
+  'Tapeta': Wallpaper,
+  'Lunar Client': Monitor,
+  'Peleryna Optifine': Shirt,
+  'Sprzęt': Cpu,
+  'Kwadratowa Masakra': Gamepad2,
+  'Strumyk Modowo': Wrench,
+};
 
-const miscItems: MiscItem[] = [
-  {
-    title: 'Tapeta',
-    icon: Wallpaper,
-    content: 'Tapeta Grafa na pulpit',
-    links: [
-      { text: 'Pepe (żaba)', url: 'https://steamcommunity.com/sharedfiles/filedetails/?id=1406608111', external: true },
-      { text: 'Honda (samochód)', url: 'https://x.com/smietankowedni/status/1733824774709686505', external: true },
-    ],
-  },
-  {
-    title: 'Lunar Client',
-    icon: Monitor,
-    content: 'Gotowa konfiguracja dla Lunar Client',
-    link: '/pliki/Profile 599065437.zip',
-    linkText: 'Pobierz config',
-    external: false,
-  },
-  {
-    title: 'Peleryna Optifine',
-    icon: Shirt,
-    content: 'Pelerynka Grafa dla Optifine',
-    link: 'https://coolshoes.moxvallix.com/banner?=aaozaeooooaFbK',
-    linkText: 'Zobacz pelerynę',
-    external: true,
-  },
-  {
-    title: 'Sprzęt',
-    icon: Cpu,
-    content: 'Lista sprzętu używanego przez Grafa',
-    link: 'http://bit.ly/SprzetGrafa',
-    linkText: 'Zobacz sprzęt',
-    external: true,
-  },
-  {
-    title: 'Kwadratowa Masakra',
-    icon: Gamepad2,
-    content: 'Wymagane: Fabric. Paczka modów dla serii.',
-    links: [
-      { text: 'Fabric', url: 'https://fabricmc.net/', external: true },
-      { text: 'Paczka modów', url: '/pliki/kwadratowa-masakra-mody-FABRIC-1.17.zip', external: false },
-    ],
-  },
-  {
-    title: 'Strumyk Modowo',
-    icon: Wrench,
-    content: 'Wymagane: Forge. Paczka modów dla serii.',
-    links: [
-      { text: 'Forge', url: 'https://files.minecraftforge.net/', external: true },
-      { text: 'Paczka modów', url: '/pliki/strumyk-modowo1.16.3.zip', external: true },
-    ],
-  },
-];
-
-const BUTTON_CLASS = "inline-flex items-center px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-all text-sm font-medium gap-2 shadow-sm hover:shadow-md active:scale-95";
+const BUTTON_CLASS = "btn-3d-blue py-2.5 px-4 text-sm font-pixel tracking-wider flex-1 flex items-center justify-center gap-2 active:translate-y-[4px]";
 
 export function Rozne() {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-gray-100 mb-4">Rzeczy Grafa</h1>
-        <p className="text-gray-400 text-lg">
-          Dodatkowe zasoby, konfiguracje i przydatne linki
-        </p>
-      </div>
+    <>
+      <Helmet>
+        <title>Rzeczy Grafa - Tapety, config Lunar Client</title>
+        <meta name="description" content="Pobierz oficjalne tapety pulpitu Grafa (Pepe, Honda), pliki profilowe Lunar Client, link do pelerynki OptiFine oraz oficjalne paczki modów na Kwadratową Masakrę." />
+        <meta name="keywords" content="lunar client config, tapeta pepe grafa, pelerynka optifine grafa, mody kwadratowa masakra, strumyk modowo paczka" />
+        <meta name="robots" content="index, follow" />
+        
+        {/* Open Graph */}
+        <meta property="og:title" content="Rzeczy Grafa - Tapety, config Lunar Client" />
+        <meta property="og:description" content="Przydatne konfiguracje, linki do sprzętu, tapety i mody od Grafa." />
+        <meta property="og:url" content="https://txtgrafa.pl/rozne" />
+      </Helmet>
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {miscItems.map((item) => (
-          <AnimatedItem key={item.title}>
-            <Card title={item.title} icon={item.icon}>
-              <p className="mb-4 text-gray-300">{item.content}</p>
+      <div className="container mx-auto px-4 py-12 max-w-4xl fade-in">
+        <div className="text-center mb-12 slide-up">
+          <h1 className="text-4xl md:text-5xl font-pixel tracking-wider text-gray-100 mb-4">Rzeczy Grafa</h1>
+          <p className="text-gray-400 font-sans text-lg">
+            Dodatkowe zasoby, konfiguracje i przydatne linki
+          </p>
+        </div>
 
-              <div className="flex flex-wrap gap-3">
-                {item.links ? (
-                  item.links.map((link) => (
-                    <a
-                      key={link.text}
-                      href={link.url}
-                      className={BUTTON_CLASS}
-                      target={link.external ? '_blank' : undefined}
-                      rel={link.external ? 'noopener noreferrer nofollow' : undefined}
-                      referrerPolicy={link.external ? 'no-referrer' : undefined}
-                    >
-                      {link.text}
-                      {link.external && <ExternalLink className="w-3.5 h-3.5" />}
-                    </a>
-                  ))
-                ) : item.link ? (
-                  <a
-                    href={item.link}
-                    className={BUTTON_CLASS}
-                    target={item.external ? '_blank' : undefined}
-                    rel={item.external ? 'noopener noreferrer nofollow' : undefined}
-                    referrerPolicy={item.external ? 'no-referrer' : undefined}
-                  >
-                    {item.linkText}
-                    {item.external && <ExternalLink className="w-3.5 h-3.5" />}
-                  </a>
-                ) : null}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {miscItems.map((item, idx) => {
+            const Icon = icons[item.title] || Wallpaper;
+            return (
+              <div 
+                key={item.title} 
+                className="slide-up h-full"
+                style={{ animationDelay: `${0.05 * (idx + 1)}s` }}
+              >
+                <Card title={item.title} icon={Icon} className="h-full flex flex-col">
+                  <p className="mb-6 font-sans text-gray-300 flex-grow">{item.content}</p>
+
+                  <div className="flex gap-4 pt-2">
+                    {item.links ? (
+                      item.links.map((link) => {
+                        const isExternal = link.url.startsWith('http');
+                        return (
+                          <a
+                            key={link.text}
+                            href={link.url}
+                            className={BUTTON_CLASS}
+                            target={isExternal ? '_blank' : undefined}
+                            rel={isExternal ? 'noopener noreferrer nofollow' : undefined}
+                            referrerPolicy={isExternal ? 'no-referrer' : undefined}
+                          >
+                            <span>{link.text}</span>
+                            {isExternal && <ExternalLink className="w-3.5 h-3.5" />}
+                          </a>
+                        );
+                      })
+                    ) : item.link ? (
+                      <a
+                        href={item.link}
+                        className={BUTTON_CLASS}
+                        target={item.link.startsWith('http') ? '_blank' : undefined}
+                        rel={item.link.startsWith('http') ? 'noopener noreferrer nofollow' : undefined}
+                        referrerPolicy={item.link.startsWith('http') ? 'no-referrer' : undefined}
+                      >
+                        <span>{item.linkText}</span>
+                        {item.link.startsWith('http') && <ExternalLink className="w-3.5 h-3.5" />}
+                      </a>
+                    ) : null}
+                  </div>
+                </Card>
               </div>
-            </Card>
-          </AnimatedItem>
-        ))}
+            );
+          })}
+        </div>
       </div>
-    </div>
+    </>
   );
 }

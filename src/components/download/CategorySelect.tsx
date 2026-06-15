@@ -1,11 +1,10 @@
-import { motion } from 'framer-motion';
-import { CategoryKey, categories } from '@/lib/data';
-import { cn } from '@/lib/utils';
-import { Layers, Grid3X3, Puzzle } from 'lucide-react';
+import { CategoryKey, categories } from '../../lib/data';
+import { cn } from '../../lib/utils';
+import { Layers, Grid3x3, Puzzle } from 'lucide-react';
 
 const icons: Record<CategoryKey, typeof Layers> = {
   overlay: Layers,
-  ramki: Grid3X3,
+  ramki: Grid3x3,
   pozostale: Puzzle,
 };
 
@@ -16,44 +15,17 @@ interface CategorySelectProps {
 
 export function CategorySelect({ value, onChange }: CategorySelectProps) {
   const keys = Object.keys(categories) as CategoryKey[];
-  const activeIndex = keys.indexOf(value);
 
   return (
-    <div className="space-y-8 text-center relative">
+    <div className="space-y-4 text-center relative select-none">
       <label 
         id="category-label"
-        className="block text-xl font-bold text-gradient-blue"
+        className="block font-pixel text-xl tracking-wider text-green-400"
       >
         Krok 1: Wybierz kategorię
       </label>
       
       <div className="relative max-w-2xl mx-auto">
-        {/* Bouncing Ball Animation - Perfectly centered above buttons */}
-        <div className="absolute -top-7 left-0 right-0 hidden sm:block pointer-events-none z-20">
-          <div className="grid grid-cols-3 w-full">
-            <motion.div
-              animate={{ x: `${activeIndex * 100}%` }}
-              transition={{ type: "spring", stiffness: 350, damping: 30 }}
-              className="flex justify-center"
-            >
-              <motion.div
-                key={value}
-                initial={{ y: 10, opacity: 0 }}
-                animate={{ 
-                  y: [10, -15, 0],
-                  opacity: 1,
-                  scale: [1, 1.4, 1],
-                }}
-                transition={{ 
-                  duration: 0.45,
-                  ease: "easeOut"
-                }}
-                className="w-3.5 h-3.5 bg-blue-400 rounded-full shadow-[0_0_20px_rgba(96,165,250,1)] ring-4 ring-blue-400/20"
-              />
-            </motion.div>
-          </div>
-        </div>
-
         <div 
           role="radiogroup" 
           aria-labelledby="category-label"
@@ -64,30 +36,21 @@ export function CategorySelect({ value, onChange }: CategorySelectProps) {
             const isSelected = value === key;
             
             return (
-              <motion.button
+              <button
                 key={key}
                 onClick={() => onChange(key)}
                 role="radio"
                 aria-checked={isSelected}
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
                 className={cn(
-                  'relative flex flex-col items-center justify-center p-6 rounded-2xl border-2 transition-all duration-300 gap-3 z-10 overflow-hidden',
+                  'flex flex-col items-center justify-center p-4 md:p-5 rounded-[4px] border-2 border-t-white/10 border-l-white/10 transition-all duration-75 gap-2 select-none active:translate-y-[4px]',
                   isSelected
-                    ? 'border-blue-500 bg-blue-500/15 text-blue-400 shadow-[0_0_30px_rgba(59,130,246,0.2)]'
-                    : 'border-white/5 bg-white/5 text-gray-500 hover:border-white/10 hover:text-gray-300'
+                    ? 'bg-green-600 border-r-black/40 border-b-black/60 text-white shadow-[0_4px_0_#14532d,0_0_20px_rgba(34,197,94,0.5)]'
+                    : 'bg-obsidian-800 hover:bg-obsidian-700 border-r-black/30 border-b-black/45 text-gray-400 hover:text-gray-200 shadow-[0_4px_0_rgba(0,0,0,0.5)]'
                 )}
               >
-                {isSelected && (
-                  <motion.div 
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-transparent pointer-events-none"
-                  />
-                )}
-                <Icon className={cn("w-7 h-7 relative z-10", isSelected ? "text-blue-400" : "text-gray-600")} aria-hidden="true" />
-                <span className="font-bold text-xs uppercase tracking-[0.2em] relative z-10">{categories[key]}</span>
-              </motion.button>
+                <Icon className={cn("w-7 h-7", isSelected ? "text-white animate-pulse" : "text-gray-500")} aria-hidden="true" />
+                <span className="font-pixel text-lg uppercase tracking-widest">{categories[key]}</span>
+              </button>
             );
           })}
         </div>

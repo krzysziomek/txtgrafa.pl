@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Package, Sparkles } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import { cn } from '@/lib/utils';
-import grafLogo from '@/graf.svg';
+import { cn } from '../../lib/utils';
+import grafLogo from '../../graf.svg';
 
 const navItems = [
   { path: '/paczka', label: 'Jak korzystać?', icon: Package },
@@ -18,8 +16,8 @@ export function Navbar() {
   const isActive = (path: string) => location.pathname === path;
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-950/75 backdrop-blur-xl border-b border-white/10">
-      <div className="container mx-auto px-4">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-obsidian-950/75 backdrop-blur-xl border-b border-green-500/20 shadow-[0_4px_20px_rgba(34,197,94,0.12)]">
+      <div className="container mx-auto px-4 max-w-6xl">
         <div className="flex items-center justify-between h-16">
           <Link
             to="/"
@@ -27,92 +25,89 @@ export function Navbar() {
             aria-label="Strona główna Paczka Grafa"
           >
             <div className="relative">
-              <div className="absolute inset-0 bg-blue-500/25 blur-lg rounded-full group-hover:bg-blue-500/45 transition-all" />
+              <div className="absolute inset-0 bg-green-500/20 blur-lg rounded-full group-hover:bg-green-500/35 transition-all duration-300" />
               <img
                 src={grafLogo}
                 alt="Logo"
-                className="h-10 w-10 relative z-10 drop-shadow-2xl"
+                className="h-10 w-10 relative z-10 drop-shadow-[0_4px_12px_rgba(34,197,94,0.3)] transition-transform duration-300 group-hover:scale-105"
                 aria-hidden="true"
               />
             </div>
-            <span className="font-black text-xl tracking-tighter hidden sm:inline bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-300 dr-readable">
+            <span className="font-pixel text-2xl tracking-wider hidden sm:inline text-white">
               txtgrafa.pl
             </span>
           </Link>
 
-          <div className="hidden md:flex items-center gap-3">
-            {navItems.map((item) => (
-              <Link key={item.path} to={item.path}>
-                <Button
-                  variant="ghost"
-                  className={cn(
-                    'h-10 px-5 rounded-xl font-extrabold bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-500 hover:to-blue-500 text-white shadow-[0_12px_30px_-14px_rgba(99,102,241,0.9)] border border-white/10',
-                    'hover:shadow-[0_10px_30px_-12px_rgba(59,130,246,0.55)]',
-                    isActive(item.path)
-                      ? 'bg-gradient-to-r from-blue-600/25 to-indigo-600/20 border-blue-500/60 text-blue-200 shadow-[0_0_0_1px_rgba(59,130,246,0.25),0_12px_30px_-16px_rgba(59,130,246,0.6)]'
-                      : 'bg-white/5 border-white/10 text-gray-200 hover:bg-white/8 hover:border-white/20'
-                  )}
-                >
-                  <item.icon
-                    className={cn('w-4 h-4 mr-2', isActive(item.path) && 'animate-pulse')}
-                    aria-hidden="true"
-                  />
-                  {item.label}
-                  {isActive(item.path) && (
-                    <motion.div
-                      layoutId="nav-active"
-                      className="absolute -bottom-[1.1rem] left-2 right-2 h-0.5 bg-gradient-to-r from-blue-500 to-indigo-500 shadow-[0_0_12px_rgba(59,130,246,0.6)]"
-                    />
-                  )}
-                </Button>
-              </Link>
-            ))}
+          {/* Desktop Nav Items */}
+          <div className="hidden md:flex items-center gap-4">
+            {navItems.map((item) => {
+              const active = isActive(item.path);
+              const Icon = item.icon;
+              return (
+                <Link key={item.path} to={item.path} className="relative group">
+                  <span
+                    className={cn(
+                      'flex items-center h-10 px-5 rounded-[4px] font-pixel text-lg uppercase tracking-wider transition-all border-2 border-t-white/10 border-l-white/10',
+                      active
+                        ? 'bg-green-600 border-r-black/40 border-b-black/60 text-white shadow-[0_4px_0_#14532d,0_0_15px_rgba(34,197,94,0.5)]'
+                        : 'bg-obsidian-800 hover:bg-obsidian-700 active:bg-obsidian-900 border-r-black/30 border-b-black/40 text-gray-300 hover:text-white shadow-[0_3px_0_rgba(0,0,0,0.45)]'
+                    )}
+                  >
+                    <Icon className="w-4 h-4 mr-2" aria-hidden="true" />
+                    {item.label}
+                  </span>
+                </Link>
+              );
+            })}
           </div>
 
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden text-gray-100 hover:text-white bg-white/10 hover:bg-white/15 border border-white/10"
+          {/* Mobile hamburger menu */}
+          <button
+            className="md:hidden flex items-center justify-center w-10 h-10 rounded-[4px] bg-obsidian-800 hover:bg-obsidian-700 text-gray-100 hover:text-white border-2 border-t-white/10 border-l-white/10 border-r-black/30 border-b-black/40 shadow-[0_3px_0_rgba(0,0,0,0.45)] active:translate-y-[2px]"
             onClick={() => setIsOpen(!isOpen)}
             aria-expanded={isOpen}
             aria-controls="mobile-menu"
             aria-label={isOpen ? 'Zamknij menu' : 'Otwórz menu'}
           >
-            {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
-          </Button>
+            {isOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
         </div>
       </div>
 
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            id="mobile-menu"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            className="md:hidden bg-gray-950/95 backdrop-blur-xl border-b border-white/10"
-          >
-            <div className="px-4 py-4 space-y-2">
-              {navItems.map((item) => (
+      {/* Mobile menu drawer */}
+      {isOpen && (
+        <div
+          id="mobile-menu"
+          className="md:hidden bg-obsidian-950/95 backdrop-blur-xl border-b border-obsidian-800/80 slide-up"
+        >
+          <div className="px-4 py-4 space-y-3">
+            {navItems.map((item) => {
+              const active = isActive(item.path);
+              const Icon = item.icon;
+              return (
                 <Link
                   key={item.path}
                   to={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={cn(
-                    'flex items-center px-4 py-3 rounded-xl text-base font-extrabold transition-all border',
-                    isActive(item.path)
-                      ? 'bg-gradient-to-r from-blue-600/25 to-indigo-600/20 border-blue-500/60 text-blue-200 shadow-[0_10px_30px_-18px_rgba(59,130,246,0.7)]'
-                      : 'bg-white/5 text-gray-200 border-white/10 hover:bg-white/10 hover:border-white/20'
-                  )}
+                  className="block w-full"
                 >
-                  <item.icon className="w-5 h-5 mr-3" aria-hidden="true" />
-                  {item.label}
+                  <span
+                    className={cn(
+                      'flex items-center px-4 py-3 rounded-[4px] font-pixel text-lg uppercase tracking-wider transition-all border-2 border-t-white/10 border-l-white/10',
+                      active
+                        ? 'bg-green-600 border-r-black/40 border-b-black/60 text-white shadow-[0_4px_0_#14532d,0_0_15px_rgba(34,197,94,0.5)]'
+                        : 'bg-obsidian-800 border-r-black/30 border-b-black/40 text-gray-300'
+                    )}
+                  >
+                    <Icon className="w-5 h-5 mr-3" aria-hidden="true" />
+                    {item.label}
+                  </span>
                 </Link>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              );
+            })}
+          </div>
+        </div>
+      )}
     </nav>
   );
 }

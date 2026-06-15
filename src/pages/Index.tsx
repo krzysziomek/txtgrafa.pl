@@ -1,52 +1,50 @@
-import { DownloadSection } from '@/components/download/DownloadSection';
-import { AnimatedItem } from '@/components/motion/AnimatedPage';
+import { Helmet } from 'react-helmet-async';
+import { DownloadSection } from '../components/download/DownloadSection';
 
 export function Index() {
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex flex-col items-center justify-center px-4 py-16 relative overflow-hidden">
-      {/* Background Decorative Elements */}
-      <div className="absolute top-1/4 -left-20 w-72 h-72 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 -right-20 w-72 h-72 bg-purple-600/10 rounded-full blur-[120px] pointer-events-none" />
-
-      <div className="w-full max-w-4xl mx-auto text-center space-y-16 relative z-10">
+    <>
+      <Helmet>
+        <title>Paczka Grafa - Darmowe paczki zasobów do Minecraft</title>
+        <meta name="description" content="Paczka Grafa - Pobierz darmowe i zoptymalizowane paczki zasobów do Minecraft. Znajdziesz tu overlaye, ramki do rud (glowing ores), nakładki OptiFine oraz Fabric. 100% bezpieczne bezpośrednie pobieranie." />
+        <meta name="keywords" content="Minecraft, tekstury, overlay, ramki do rud, OptiFine, Fabric, paczka grafa, txt grafa, darmowe tekstury minecraft" />
+        <meta name="robots" content="index, follow" />
         
-        <div className="space-y-6">
-          
-          <AnimatedItem>
-            <h1 className="text-5xl md:text-8xl font-black tracking-tight text-white">
-              Paczka <span className="text-gradient">Grafa</span>
-            </h1>
-          </AnimatedItem>
-          
-          <AnimatedItem>
-            <p className="text-xl md:text-2xl text-gray-400 max-w-2xl mx-auto font-medium leading-relaxed">
-              Odkryj najlepsze paczki zasobów Minecraft. 
-            </p>
-          </AnimatedItem>
+        {/* Open Graph / Facebook */}
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Paczka Grafa - Darmowe paczki zasobów do Minecraft" />
+        <meta property="og:description" content="Pobierz oficjalną Paczkę Grafa bezpośrednio bez reklam. Najlepsze tekstury, overlaye i ramki rud do Minecraft." />
+        <meta property="og:url" content="https://txtgrafa.pl/" />
+        
+        {/* Twitter */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Paczka Grafa - Darmowe paczki zasobów do Minecraft" />
+        <meta name="twitter:description" content="Pobierz oficjalną Paczkę Grafa bezpośrednio bez reklam. Najlepsze tekstury, overlaye i ramki rud do Minecraft." />
+      </Helmet>
+
+      <div className="h-[calc(100vh-9.5rem)] flex flex-col items-center justify-start pt-4 md:pt-8 px-4 relative fade-in">
+        {/* Background decorative pixel-like glows - wrapped to prevent scrollbars */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-1/4 left-1/4 w-80 h-80 bg-green-500/5 rounded-full blur-[100px]" />
+          <div className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-blue-500/5 rounded-full blur-[100px]" />
         </div>
 
-        <AnimatedItem className="glass-card rounded-[2.5rem] p-8 md:p-14">
-          <DownloadSection />
-        </AnimatedItem>
-
-        <AnimatedItem>
-          <div className="flex flex-wrap items-center justify-center gap-8 opacity-50 grayscale hover:grayscale-0 transition-all duration-500">
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-blue-500" />
-              <span className="text-sm font-semibold uppercase tracking-widest">Wysoka Jakość</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-indigo-500" />
-              <span className="text-sm font-semibold uppercase tracking-widest">Optymalizacja</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-2 h-2 rounded-full bg-purple-500" />
-              <span className="text-sm font-semibold uppercase tracking-widest">100% Darmowe</span>
-            </div>
+        <div className="w-full max-w-4xl mx-auto text-center space-y-6 md:space-y-8 relative z-10">
+          <div className="space-y-2 md:space-y-3 slide-up">
+            <h1 className="text-5xl md:text-6xl font-pixel tracking-wider text-white">
+              Paczka <span className="text-gradient-green">Grafa</span>
+            </h1>
+            <p className="text-base md:text-lg text-gray-400 max-w-2xl mx-auto font-sans leading-relaxed">
+              Odkryj najlepsze i najlżejsze paczki zasobów Minecraft. 
+            </p>
           </div>
-        </AnimatedItem>
 
+          <div className="glass-card p-5 md:p-8 slide-up">
+            <DownloadSection />
+          </div>
+
+        </div>
       </div>
-    </div>
+    </>
   );
 }

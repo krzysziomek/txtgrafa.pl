@@ -2,22 +2,24 @@
 <html lang="pl">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/graf.ico" />
+    <link rel="icon" type="image/x-icon" href="./graf.ico" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="Paczka Grafa - Darmowe paczki zasobów Minecraft, overlaye i ramki do rud" />
-    <meta name="color-scheme" content="dark">
+    <meta name="color-scheme" content="dark" />
     
-    <!-- Content Security Policy -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; connect-src 'self'; media-src 'self'; object-src 'none'; frame-ancestors 'none'; base-uri 'self'; form-action 'self';">
+    <!-- Google Fonts for Inter and pixel VT323 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=VT323&display=swap" rel="stylesheet" />
+
+    <!-- Security Headers (meta tags where applicable) -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
     
-    <!-- Additional Security Headers (meta tag equivalents where possible) -->
-    <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
-    <meta name="referrer" content="strict-origin-when-cross-origin">
-    
-    <title>Paczka Grafa - txtgrafa.pl</title>
+    <title>Paczka Grafa - Darmowe paczki zasobów do Minecraft</title>
   </head>
-  <body>
+  <body class="bg-obsidian-950 text-gray-200 antialiased selection:bg-green-500/30 selection:text-green-400">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
